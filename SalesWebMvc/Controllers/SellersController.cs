@@ -40,5 +40,30 @@ namespace SalesWebMvc.Controllers
             _sellerService.Insert(seller);
             return RedirectToAction(nameof(Index)); // nameof aponta sempre para o index. Se o nome string do index mudar, continua apontando para o mesmo lugar
         }
+
+        public IActionResult Delete(int? id) // ? inidica valor opcional
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            var obj = _sellerService.FindById(id.Value); //id é nullable, por isso é necessário colocar o atributo Value
+            if (obj == null)
+            {
+                return NotFound();
+            }
+
+            return View(obj);
+
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult Delete(int id)
+        {
+            _sellerService.Remove(id);
+            return RedirectToAction(nameof(Index));
+        }
     }
 }
