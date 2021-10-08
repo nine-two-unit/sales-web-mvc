@@ -33,7 +33,7 @@ namespace SalesWebMvc.Controllers
         public IActionResult Create(Seller seller)
         {
             _sellerService.Insert(seller);
-            return RedirectToAction(nameof(Index));
+            return RedirectToAction(nameof(Index)); // nameof aponta sempre para o index. Se o nome string do index mudar, continua apontando para o mesmo lugar
         }
     }
 }
