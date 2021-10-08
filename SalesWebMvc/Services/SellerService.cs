@@ -23,7 +23,7 @@ namespace SalesWebMvc.Services
 
         public void Insert(Seller obj) // Método para inserir objeto no banco de dados
         {
-            obj.Department = _context.Department.First(); // Pega o primeiro departamento que existe no banco
+            //obj.Department = _context.Department.First(); // Pega o primeiro departamento que existe no banco
             _context.Add(obj);
             _context.SaveChanges();
         }
